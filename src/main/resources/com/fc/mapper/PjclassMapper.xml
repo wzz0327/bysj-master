@@ -100,7 +100,7 @@
     insert into pjclass (classid, classname)
     values (#{classid,jdbcType=INTEGER}, #{classname,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.fc.entity.Pjclass">
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="userid" parameterType="com.fc.entity.Pjclass">
     insert into pjclass
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="classid != null">

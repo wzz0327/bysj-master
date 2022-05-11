@@ -4,7 +4,9 @@ import com.fc.entity.Pjclass;
 import com.fc.entity.PjclassExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface PjclassMapper {
     long countByExample(PjclassExample example);
 
