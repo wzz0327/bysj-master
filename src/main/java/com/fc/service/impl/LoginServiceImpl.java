@@ -53,16 +53,20 @@ public class LoginServiceImpl implements LoginService {
             session.setMaxInactiveInterval(30 * 60);
 
             if (user.getUserpwd().equals(password)){
+                String roleid="";
                 if (user.getRoleid().equals(1)){
+                    session.setAttribute("roleid",user.getRoleid());
                     return "teacher/manage";
                 }else if (user.getRoleid().equals(2)){
+                    session.setAttribute("roleid",user.getRoleid());
                     return "student/StuMan";
                 }else if (user.getRoleid().equals(3)){
+                    session.setAttribute("roleid",user.getRoleid());
                     return "admin/AdminManage";
                 }
             }else {
-                map.put("message","登录失败，用户名或密码错误");
-                request.setAttribute("map",map);
+                String errorInfo = "账号或密码错误";
+                session.setAttribute("errorInfo",errorInfo);
             }
         }
 
@@ -71,7 +75,7 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public String canRegister(Users user,HttpServletRequest request) {
-
+        HttpSession session = request.getSession();
         List<Users> users;
         Map<String ,Object> map=new HashMap<>();
         map.put("code",-1);
@@ -84,8 +88,8 @@ public class LoginServiceImpl implements LoginService {
             criteria.andUsernameEqualTo(user.getUsername());
             users = usersMapper.selectByExample(example);
         }else {
-            map.put("message","用户名不能为空");
-            request.setAttribute("map",map);
+            String cz="此用户名已存在";
+            session.setAttribute("cz",cz);
             return "redirect:/register";
         }
 
@@ -95,7 +99,8 @@ public class LoginServiceImpl implements LoginService {
             return "redirect:/register";
         }else {
             if (user.getUserpwd().equals("") || user.getTruename().equals("")){
-                map.put("message","密码或真实姓名不能为空");
+                String wk="密码或真实姓名不能为空";
+                session.setAttribute("wk",wk);
                 return "redirect:/register";
             }else {
                 int insert = usersMapper.insert(user);
@@ -104,6 +109,8 @@ public class LoginServiceImpl implements LoginService {
                     map.put("message","注册成功");
                     map.put("success",true);
                     request.setAttribute("map",map);
+                    String cg="注册成功,请登录";
+                    session.setAttribute("cg",cg);
                     return "redirect:/login";
                 }
             }
@@ -117,5 +124,77 @@ public class LoginServiceImpl implements LoginService {
         List<Pjclass> list = pjclassMapper.selectByExample(null);
         model.addAttribute("list",list);
         return "student/register";
+    }
+
+    @Override
+    public String logout(HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
+        session.removeAttribute("user");
+        session.removeAttribute("errorInfo");
+        session.removeAttribute("cxdl");
+        session.removeAttribute("roleid");
+        return "redirect:/login";
+    }
+
+    @Override
+    public String tlogout(HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
+        session.removeAttribute("user");
+        session.removeAttribute("errorInfo");
+        session.removeAttribute("roleid");
+        return "redirect:/login";
+    }
+
+    @Override
+    public String alogout(HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
+        session.removeAttribute("user");
+        session.removeAttribute("errorInfo");
+        session.removeAttribute("roleid");
+        return "redirect:/login";
+    }
+
+    @Override
+    public String llogout(HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
+        session.removeAttribute("errorInfo");
+        session.removeAttribute("cxdl");
+        session.removeAttribute("roleid");
+        return  "redirect:/login";
+    }
+
+    @Override
+    public String zclogout(HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
+        session.removeAttribute("wk");
+        session.removeAttribute("cz");
+        return "redirect:/register";
+    }
+
+    @Override
+    public String xiugai(Integer userid, String userpwd, HttpServletRequest request) {
+        Integer aff = usersMapper.updateByUserId(userid,userpwd);
+        String cxdl ="";
+        if (aff>0){
+            cxdl = "cxdl";
+            request.getSession().setAttribute("cxdl",cxdl);
+            return "redirect:/login";
+        }
+        return "redirect:/logout";
+    }
+
+    @Override
+    public String login(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        if (session.getAttribute("roleid")!=null){
+            if (session.getAttribute("roleid").equals(1)){
+                return "teacher/manage";
+            }else if (session.getAttribute("roleid").equals(2)){
+                return "student/StuMan";
+            }else if (session.getAttribute("roleid").equals(3)){
+                return "admin/AdminManage";
+            }
+        }
+        return "student/login";
     }
 }

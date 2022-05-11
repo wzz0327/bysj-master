@@ -20,8 +20,8 @@ public class LoginController {
     private LoginService loginService;
 
     @GetMapping("login")
-    public String login(){
-        return "student/login";
+    public String login(HttpServletRequest request){
+        return loginService.login(request);
     }
 
     @PostMapping("CanLogin")
@@ -41,5 +41,34 @@ public class LoginController {
     public String canRegister(Users user,
                               HttpServletRequest request){
         return loginService.canRegister(user,request);
+    }
+
+    @RequestMapping("logout")
+    public String logout(HttpServletRequest request){
+        return loginService.logout(request);
+    }
+
+    @RequestMapping("Tlogout")
+    public String tlogout(HttpServletRequest request){
+        return loginService.tlogout(request);
+    }
+
+    @RequestMapping("Alogout")
+    public String alogout(HttpServletRequest request){
+        return loginService.alogout(request);
+    }
+    @RequestMapping("llogout")
+    public String llogout(HttpServletRequest request){
+        return loginService.llogout(request);
+    }
+
+    @RequestMapping("zclogout")
+    public String zclogout(HttpServletRequest request){
+        return loginService.zclogout(request);
+    }
+
+    @PostMapping("xiugai")
+    public String xiugai(Integer userid,String userpwd,HttpServletRequest request){
+        return loginService.xiugai(userid,userpwd,request);
     }
 }

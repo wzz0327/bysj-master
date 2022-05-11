@@ -57,8 +57,8 @@
                         <h4 class="modal-title" id="myModalLabel">修改密码</h4>
                     </div>
                     <div class="modal-body">
-                        <input type="hidden" name="userid" value="session.lis.getUserid">
-                        <input type="hidden" id="ps" value="session.lis.getUserpwd">
+                        <input type="hidden" name="userid" th:value="${session.user.getUserid}">
+                        <input type="hidden" id="ps" th:value="${session.user.getUserpwd}">
                         <div class="form-group form-inline">
                             <label>原密码：</label>
                             <input type="password" name="pass" id="pass" class="form-control" placeholder="请输入旧密码"/>

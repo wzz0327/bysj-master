@@ -12,4 +12,18 @@ public interface LoginService {
     String canRegister(Users user,HttpServletRequest request);
 
     String register(Model model);
+
+    String logout(HttpServletRequest request);
+
+    String tlogout(HttpServletRequest request);
+
+    String alogout(HttpServletRequest request);
+
+    String llogout(HttpServletRequest request);
+
+    String zclogout(HttpServletRequest request);
+
+    String xiugai(Integer userid, String userpwd, HttpServletRequest request);
+
+    String login(HttpServletRequest request);
 }
