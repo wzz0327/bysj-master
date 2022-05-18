@@ -4,7 +4,9 @@ import com.fc.entity.Studentexam;
 import com.fc.entity.StudentexamExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface StudentexamMapper {
     long countByExample(StudentexamExample example);
 
@@ -27,4 +29,8 @@ public interface StudentexamMapper {
     int updateByPrimaryKeySelective(Studentexam record);
 
     int updateByPrimaryKey(Studentexam record);
+
+    void updatePname(@Param("pname") String pname, @Param("eid") Integer eid);
+
+    void deleteByEid(@Param("eid") Integer eid);
 }

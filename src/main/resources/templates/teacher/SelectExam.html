@@ -65,7 +65,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="examlist: ${examlist.getContent()}">
+        <tr th:each="examlist: ${examlist.list}">
             <td><input type="checkbox" name="items" th:id="${examlist.eid}"/></td>
             <td th:text="${examlist.eid}"></td>
             <td th:text="${examlist.pname}"></td>
@@ -96,16 +96,16 @@
 </div>
 <div class="row" style="margin-left: 18%">
     <!--分页文字信息  -->
-    <div class="col-md-6">当前 <span th:text="${examlist.getNumber()} + 1"></span>页,总<span th:text="${examlist.totalPages}"></span>
-        页,总 <span th:text="${examlist.totalElements}"></span> 条记录</div>
+    <div class="col-md-6">当前 <span th:text="${examlist.pageNum}"></span>页,总<span th:text="${examlist.pages}"></span>
+        页</div>
     <!-- 分页条信息 -->
     <div class="col-md-6">
         <nav aria-label="Page navigation">
             <ul class="pagination">
                 <li><a th:href="@{/selectexam}">首页</a></li>
-                <li><a th:href="@{/selectexam(pageNum = ${examlist.hasPrevious()} ? ${examlist.getNumber() } : 1)}">上一页</a></li>
-                <li><a th:href="@{/selectexam(pageNum = ${examlist.hasNext()} ? ${examlist.getNumber()} + 2 : ${examlist.totalPages})}">下一页</a></li>
-                <li><a th:href="@{/selectexam(pageNum = ${examlist.totalPages})}">末页</a></li>
+                <li><a th:href="@{/selectexam(pageNum = ${examlist.hasPreviousPage} ? ${examlist.pageNum} -1: 1)}">上一页</a></li>
+                <li><a th:href="@{/selectexam(pageNum = ${examlist.hasNextPage} ? ${examlist.pageNum} + 1 : ${examlist.pages})}">下一页</a></li>
+                <li><a th:href="@{/selectexam(pageNum = ${examlist.pages})}">末页</a></li>
             </ul>
         </nav>
     </div>

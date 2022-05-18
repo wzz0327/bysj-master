@@ -64,17 +64,17 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="stulist: ${pageInfo.getContent()}">
-            <td><input type="checkbox" name="items" th:id="${stulist.userid}"/></td>
-            <td th:text="${stulist.userid}"></td>
-            <td th:text="${stulist.username}"></td>
-            <td th:text="${stulist.userpwd}"></td>
-            <td th:text="${stulist.truename}"></td>
+        <tr th:each="stu: ${pageInfo.list}">
+            <td><input type="checkbox" name="items" th:id="${stu.userid}"/></td>
+            <td th:text="${stu.userid}"></td>
+            <td th:text="${stu.username}"></td>
+            <td th:text="${stu.userpwd}"></td>
+            <td th:text="${stu.truename}"></td>
             <td>
-                <a th:onclick="'javascript:edit(\''+${stulist.userid}+'\');'" style="text-decoration: none;">
+                <a th:onclick="'javascript:edit(\''+${stu.userid}+'\');'" style="text-decoration: none;">
                     <button class="btn btn-default" style="width: 50px;height: 30px;background: #3e8f3e">修改</button>
                 </a>
-                <a th:href="@{'./DeleteStu?userid='+${stulist.userid}}">
+                <a th:href="@{'./DeleteStu?userid='+${stu.userid}}">
                     <button class="btn btn-default" style="width: 50px;height: 30px;background: red">
                         删除
                     </button>
@@ -86,16 +86,16 @@
 </div>
 <div class="row" style="margin-left: 18%">
     <!--分页文字信息  -->
-    <div class="col-md-6">当前 <span th:text="${pageInfo.getNumber()} + 1"></span>页,总<span th:text="${pageInfo.totalPages}"></span>
-        页,总 <span th:text="${pageInfo.totalElements}"></span> 道题目</div>
+    <div class="col-md-6">当前 <span th:text="${pageInfo.pageNum}"></span>页,总<span th:text="${pageInfo.pages}"></span>页
+    </div>
     <!-- 分页条信息 -->
     <div class="col-md-6">
         <nav aria-label="Page navigation">
             <ul class="pagination">
                 <li><a th:href="@{/StudentList}">首页</a></li>
-                <li><a th:href="@{/StudentList(pageNum = ${pageInfo.hasPrevious()} ? ${pageInfo.getNumber() } : 1)}">上一页</a></li>
-                <li><a th:href="@{/StudentList(pageNum = ${pageInfo.hasNext()} ? ${pageInfo.getNumber()} + 2 : ${pageInfo.totalPages})}">下一页</a></li>
-                <li><a th:href="@{/StudentList(pageNum = ${pageInfo.totalPages})}">末页</a></li>
+                <li><a th:href="@{/StudentList(pageNum = ${pageInfo.hasPreviousPage} ? ${pageInfo.pageNum} - 1 : 1)}">上一页</a></li>
+                <li><a th:href="@{/StudentList(pageNum = ${pageInfo.hasNextPage} ? ${pageInfo.pageNum} + 1 : ${pageInfo.pages})}">下一页</a></li>
+                <li><a th:href="@{/StudentList(pageNum = ${pageInfo.pages})}">末页</a></li>
             </ul>
         </nav>
     </div>
@@ -139,7 +139,7 @@
                         <label class="col-sm-2 control-label">班级</label>
                         <div class="col-sm-5">
                         <select name="classid" >
-                        <option name="classid" th:each="pjclass : ${list}" th:value="${pjclass.classid}" th:text="${pjclass.classname}"></option>
+                        <option name="classid" th:each="pjclass : ${pjclassList}" th:value="${pjclass.classid}" th:text="${pjclass.classname}"></option>
                         </select>
                         </div>
                 </div>

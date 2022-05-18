@@ -31,4 +31,6 @@ public interface UsersMapper {
     int updateByPrimaryKey(Users record);
 
     Integer updateByUserId(@Param("userid") Integer userid, @Param("userpwd") String userpwd);
+
+    void deleteByClassid(@Param("classid") Integer classid);
 }

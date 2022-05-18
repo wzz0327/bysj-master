@@ -4,7 +4,9 @@ import com.fc.entity.Exam;
 import com.fc.entity.ExamExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ExamMapper {
     long countByExample(ExamExample example);
 
@@ -27,4 +29,6 @@ public interface ExamMapper {
     int updateByPrimaryKeySelective(Exam record);
 
     int updateByPrimaryKey(Exam record);
+
+    void deleteByEid(Integer eid);
 }
