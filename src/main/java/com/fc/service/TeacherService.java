@@ -1,9 +1,6 @@
 package com.fc.service;
 
-import com.fc.entity.Course;
-import com.fc.entity.Exam;
-import com.fc.entity.Pjclass;
-import com.fc.entity.Users;
+import com.fc.entity.*;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletResponse;
@@ -43,5 +40,11 @@ public interface TeacherService {
 
     String insertexam(Exam exam,Model model);
 
-    //String finddanxuan(Model model, Integer pageNum);
+    String finddanxuan(Model model, Integer pageNum);
+
+    String addSingle(Subject subject, Model model);
+
+    String findMultiple(Model model, Integer pageNum);
+
+    String findAllScore(HttpSession session, Model model);
 }

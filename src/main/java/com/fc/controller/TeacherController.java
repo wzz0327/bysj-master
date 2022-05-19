@@ -113,8 +113,23 @@ public class TeacherController {
         return teacherService.insertexam(exam,model);
     }
 
-//    @RequestMapping("finddanxuan")
-//    private String finddanxuan(Model model,@RequestParam(defaultValue = "1") Integer pageNum){
-//        return teacherService.finddanxuan(model,pageNum);
-//    }
+    @RequestMapping("finddanxuan")
+    private String finddanxuan(Model model,@RequestParam(defaultValue = "1") Integer pageNum){
+        return teacherService.finddanxuan(model,pageNum);
+    }
+
+    @PostMapping("addSingle")
+    private String addSingle(Subject subject,Model model){
+        return teacherService.addSingle(subject,model);
+    }
+
+    @RequestMapping("findMultiple")
+    private String findMultiple(Model model,@RequestParam(defaultValue = "1") Integer pageNum){
+        return teacherService.findMultiple(model,pageNum);
+    }
+
+    @RequestMapping("findAllScore")
+    private String findAllScore(HttpSession session,Model model){
+        return teacherService.findAllScore(session,model);
+    }
 }

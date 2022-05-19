@@ -1,6 +1,6 @@
 package com.fc.entity;
 
-public class Subject {
+public class Subject extends Course{
     private Integer sid;
 
     private Integer cno;

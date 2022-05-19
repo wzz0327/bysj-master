@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SubjectMapper {
+public interface SubjectMapper{
     long countByExample(SubjectExample example);
 
     int deleteByExample(SubjectExample example);

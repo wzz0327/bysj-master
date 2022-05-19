@@ -284,12 +284,41 @@ public class TeacherServiceImpl implements TeacherService {
         return "redirect:/selectexam";
     }
 
-//    @Override
-//    public String finddanxuan(Model model, Integer pageNum) {
-//        PageHelper.startPage(pageNum, 6);
-//        List<Subject> subjects = subjectDao.selectByStype(1);
-//        PageInfo<Subject> info = new PageInfo<>(subjects);
+    @Override
+    public String finddanxuan(Model model, Integer pageNum) {
+        PageHelper.startPage(pageNum, 6);
+        List<Subject> subjects = subjectDao.selectByStype(1);
+        PageInfo<Subject> info = new PageInfo<>(subjects);
+        model.addAttribute("pageInfo",info);
+        return "teacher/Single";
+    }
+
+    @Override
+    public String addSingle(Subject subject, Model model) {
+        int i = subjectDao.insert(subject);
+        return "redirect:/finddanxuan";
+    }
+
+    @Override
+    public String findMultiple(Model model, Integer pageNum) {
+        PageHelper.startPage(pageNum, 6);
+        List<Subject> subjects = subjectDao.selectByStype(2);
+        PageInfo<Subject> info = new PageInfo<>(subjects);
+        model.addAttribute("pageInfo",info);
+        return "teacher/multiple";
+    }
+
+    @Override
+    public String findAllScore(HttpSession session, Model model) {
+        Integer classid=(Integer)session.getAttribute("Tclassid");
+        Pjclass pjclass = pjclassMapper.selectByPrimaryKey(classid);
+        model.addAttribute("cs",pjclass);
+        List<Studentexam> studentexams = studentexamDao.selectByExample(null);
+
+        model.addAttribute("score",studentexams);
+//        PageInfo<Studentexam> info = new PageInfo<>(studentexams);
 //        model.addAttribute("pageInfo",info);
-//        return "teacher/Single";
-//    }
+        return "teacher/studentScore";
+    }
+
 }

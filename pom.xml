@@ -81,11 +81,6 @@
             <artifactId>bootstrap-select</artifactId>
             <version>1.12.4</version>
         </dependency>
-        <dependency>
-            <groupId>repository.com.github.pagehelper</groupId>
-            <artifactId>pagehelper</artifactId>
-            <version>5.2.0</version>
-        </dependency>
     </dependencies>
 
     <build>

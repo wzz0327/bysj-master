@@ -31,12 +31,6 @@ public class LoginServiceImpl implements LoginService {
 
         HttpSession session=request.getSession();
 
-        Map<String,Object> map=new HashMap<>();
-        map.put("code",-1);
-        map.put("message","登录失败，当前用户不存在");
-        map.put("success",false);
-        request.setAttribute("map",map);
-
         UsersExample example = new UsersExample();
         UsersExample.Criteria criteria = example.createCriteria();
         criteria.andUsernameEqualTo(username);
@@ -44,17 +38,13 @@ public class LoginServiceImpl implements LoginService {
 
         if (users.size()>0){
             Users user = users.get(0);
-            map.put("code",200);
-            map.put("message","登录成功");
-            map.put("success",true);
-            request.setAttribute("map",map);
 
             session.setAttribute("user",user);
             session.setMaxInactiveInterval(30 * 60);
-
+            session.setAttribute("classid",user.getClassid());
             if (user.getUserpwd().equals(password)){
-                String roleid="";
                 if (user.getRoleid().equals(1)){
+                    session.setAttribute("Tclassid",user.getClassid());
                     session.setAttribute("roleid",user.getRoleid());
                     return "teacher/manage";
                 }else if (user.getRoleid().equals(2)){

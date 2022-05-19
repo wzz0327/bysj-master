@@ -61,7 +61,7 @@
         <tr th:each="sublist: ${pageInfo.list}">
             <td><input type="checkbox" name="items" th:id="${sublist.sid}"/></td>
             <td th:text="${sublist.sid}"></td>
-            <td th:text="${sublist.course.cname}"></td>
+            <td th:text="${sublist.cname}"></td>
             <td th:text="${sublist.scontent}"></td>
             <td th:text="${sublist.sa}"></td>
             <td th:text="${sublist.sb}"></td>
