@@ -174,7 +174,8 @@ public class TeacherServiceImpl implements TeacherService {
         for(String str : stuList){
             LString.add(new Integer(str));
             Integer eid = new Integer(str);
-            examDao.deleteByEid(eid);
+            paperDao.deleteByEid(eid);
+            examDao.deleteByPrimaryKey(eid);
             studentsubjectDao.deleteByEid(eid);
             studentexamDao.deleteByEid(eid);
         }
@@ -316,8 +317,8 @@ public class TeacherServiceImpl implements TeacherService {
         List<Studentexam> studentexams = studentexamDao.selectByExample(null);
 
         model.addAttribute("score",studentexams);
-//        PageInfo<Studentexam> info = new PageInfo<>(studentexams);
-//        model.addAttribute("pageInfo",info);
+        PageInfo<Studentexam> info = new PageInfo<>(studentexams);
+        model.addAttribute("pageInfo",info);
         return "teacher/studentScore";
     }
 

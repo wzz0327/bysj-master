@@ -29,4 +29,10 @@ public interface PaperMapper {
     int updateByPrimaryKeySelective(Paper record);
 
     int updateByPrimaryKey(Paper record);
+
+    List<Paper> finbystype(@Param("eid") Integer eid, @Param("stype") Integer stype);
+
+    void deleteByEid(@Param("eid") Integer eid);
+
+    List<Paper> selectByEid(@Param("eid") Integer eid);
 }

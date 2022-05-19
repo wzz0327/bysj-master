@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fc.dao.StudentexamMapper">
+  <delete id="deleteByEid" parameterType="java.lang.Integer">
+    delete from studentexam
+    where eid = #{eid,jdbcType=INTEGER}
+  </delete>
   <select id="findByOne" parameterType="com.fc.entity.Studentexam" >
     select * from studentexam where ueserid=#{ueserid} and eid=#{eid}
   </select>

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fc.dao.PaperMapper">
+  <delete id="deleteByEid" parameterType="java.lang.Integer">
+    delete from paper
+    where eid = #{eid,jdbcType=INTEGER}
+  </delete>
   <select id="finbystype" parameterType="com.fc.entity.Paper" resultMap="BaseResultMap">
     select * from paper where eid=#{eid} and stype=#{stype}
   </select>

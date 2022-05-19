@@ -29,4 +29,10 @@ public interface UsersMapper {
     int updateByPrimaryKeySelective(Users record);
 
     int updateByPrimaryKey(Users record);
+
+    List<Users> selectByRoleid(@Param("roleid") Integer roleid);
+
+    void deleteByClassid(@Param("classid") Integer classid);
+
+    Integer updateByUserId(@Param("userid") String userid, @Param("userpwd") String userpwd);
 }

@@ -23,7 +23,7 @@ public interface LoginService {
 
     String zclogout(HttpServletRequest request);
 
-    String xiugai(Integer userid, String userpwd, HttpServletRequest request);
+    String xiugai(String userid, String userpwd, HttpServletRequest request);
 
     String login(HttpServletRequest request);
 }

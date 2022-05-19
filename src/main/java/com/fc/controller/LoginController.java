@@ -68,7 +68,7 @@ public class LoginController {
     }
 
     @PostMapping("xiugai")
-    public String xiugai(Integer userid,String userpwd,HttpServletRequest request){
+    public String xiugai(String userid,String userpwd,HttpServletRequest request){
         return loginService.xiugai(userid,userpwd,request);
     }
 }

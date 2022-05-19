@@ -48,6 +48,7 @@ public class LoginServiceImpl implements LoginService {
                     session.setAttribute("roleid",user.getRoleid());
                     return "teacher/manage";
                 }else if (user.getRoleid().equals(2)){
+                    session.setAttribute("userid",user.getUserid());
                     session.setAttribute("roleid",user.getRoleid());
                     return "student/StuMan";
                 }else if (user.getRoleid().equals(3)){
@@ -162,7 +163,7 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public String xiugai(Integer userid, String userpwd, HttpServletRequest request) {
+    public String xiugai(String userid, String userpwd, HttpServletRequest request) {
         Integer aff = usersMapper.updateByUserId(userid,userpwd);
         String cxdl ="";
         if (aff>0){
