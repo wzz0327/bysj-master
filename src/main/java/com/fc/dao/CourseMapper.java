@@ -4,6 +4,7 @@ import com.fc.entity.Course;
 import com.fc.entity.CourseExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 public interface CourseMapper {
     long countByExample(CourseExample example);
@@ -27,4 +28,13 @@ public interface CourseMapper {
     int updateByPrimaryKeySelective(Course record);
 
     int updateByPrimaryKey(Course record);
+
+
+    Iterable<Course> findAll();
+
+    Course findByCno(Integer cno);
+
+    void save(Course course);
+
+    void deleteByCno(Integer cno);
 }

@@ -1,4 +1,6 @@
 spring:
+  main:
+    allow-circular-references: true
   datasource:
     #    默认数据源使用的是Hikari，性能非常好
     type: com.zaxxer.hikari.HikariDataSource

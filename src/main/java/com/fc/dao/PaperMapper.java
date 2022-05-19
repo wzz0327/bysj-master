@@ -27,4 +27,6 @@ public interface PaperMapper {
     int updateByPrimaryKeySelective(Paper record);
 
     int updateByPrimaryKey(Paper record);
+
+    void deleteByCno(Integer cno);
 }
