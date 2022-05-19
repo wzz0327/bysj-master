@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fc.dao.StudentexamMapper">
+  <select id="findByOne" parameterType="com.fc.entity.Studentexam" >
+    select * from studentexam where ueserid=#{ueserid} and eid=#{eid}
+  </select>
   <resultMap id="BaseResultMap" type="com.fc.entity.Studentexam">
     <id column="seid" jdbcType="INTEGER" property="seid" />
     <result column="userid" jdbcType="INTEGER" property="userid" />
@@ -110,7 +113,7 @@
       #{eid,jdbcType=INTEGER}, #{pname,jdbcType=VARCHAR}, #{zscore,jdbcType=INTEGER}, 
       #{score,jdbcType=INTEGER}, #{tjtime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.fc.entity.Studentexam">
+  <insert id="insertSelective" parameterType="com.fc.entity.Studentexam" useGeneratedKeys="true" keyProperty="seid">
     insert into studentexam
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="seid != null">

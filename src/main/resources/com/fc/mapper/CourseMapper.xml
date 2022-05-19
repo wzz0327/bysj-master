@@ -5,6 +5,9 @@
     <id column="cno" jdbcType="INTEGER" property="cno" />
     <result column="cname" jdbcType="VARCHAR" property="cname" />
   </resultMap>
+  <select id="findByCno" parameterType="com.fc.entity.Course" resultMap="BaseResultMap">
+    select * from course where cno=#{cno}
+  </select>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

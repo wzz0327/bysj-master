@@ -2,7 +2,7 @@ package com.fc.entity;
 
 import java.util.Date;
 
-public class Exam {
+public class Exam extends Course{
     private Integer eid;
 
     private String pname;
@@ -122,4 +122,7 @@ public class Exam {
     public void setTesttime(Integer testtime) {
         this.testtime = testtime;
     }
+
+//    public void setCourse(Course byCno) {
+//    }
 }

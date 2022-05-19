@@ -30,6 +30,14 @@ public interface StudentexamMapper {
 
     int updateByPrimaryKey(Studentexam record);
 
+
+
+    Studentexam findByOne(@Param("userid") Integer userid, @Param("eid") Integer eid);
+
+    List<Studentexam> findByUserid(Integer userid);
+
+    Studentexam findByseid(Integer seid);
+
     void updatePname(@Param("pname") String pname, @Param("eid") Integer eid);
 
     void deleteByEid(@Param("eid") Integer eid);

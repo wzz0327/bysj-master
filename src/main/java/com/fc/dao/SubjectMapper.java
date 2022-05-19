@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SubjectMapper{
+public interface SubjectMapper {
     long countByExample(SubjectExample example);
 
     int deleteByExample(SubjectExample example);
@@ -29,6 +29,8 @@ public interface SubjectMapper{
     int updateByPrimaryKeySelective(Subject record);
 
     int updateByPrimaryKey(Subject record);
+
+    Subject findBySid(Integer sid);
 
     List<Subject> finbytype(@Param("stype") Integer stype, @Param("cno") Integer cno);
 
