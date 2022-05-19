@@ -22,7 +22,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="teachers: ${teachers.getContent()}">
+        <tr th:each="teachers:${list}">
             <td><li type=""></li></td>
             <td th:text="${teachers.username}"></td>
             <td th:text="${teachers.userpwd}"></td>
@@ -45,16 +45,16 @@
 </div>
 <div class="row" style="margin-left: 18%">
     <!--分页文字信息  -->
-    <div class="col-md-6">当前 <span th:text="${teachers.getNumber()} + 1"></span>页,总<span th:text="${teachers.totalPages}"></span>
-        页,总 <span th:text="${teachers.totalElements}"></span> 道题目</div>
+    <div class="col-md-6">当前 <span th:text="${teachers.pageNum}"></span>页,总<span th:text="${teachers.pages}"></span>
+        页</div>
     <!-- 分页条信息 -->
     <div class="col-md-6">
         <nav aria-label="Page navigation">
             <ul class="pagination">
                 <li><a th:href="@{/AdminTeacherManage}">首页</a></li>
-                <li><a th:href="@{/AdminTeacherManage(pageNum = ${teachers.hasPrevious()} ? ${teachers.getNumber() } : 1)}">上一页</a></li>
-                <li><a th:href="@{/AdminTeacherManage(pageNum = ${teachers.hasNext()} ? ${teachers.getNumber()} + 2 : ${teachers.totalPages})}">下一页</a></li>
-                <li><a th:href="@{/AdminTeacherManage(pageNum = ${teachers.totalPages})}">末页</a></li>
+                <li><a th:href="@{/AdminTeacherManage(pageNum = ${teachers.hasPreviousPage} ? ${teachers.pageNum})}">上一页</a></li>
+                <li><a th:href="@{/AdminTeacherManage(pageNum = ${teachers.hasNextPage} ? ${teachers.pageNum} + 1 : ${teachers.pages})}">下一页</a></li>
+                <li><a th:href="@{/AdminTeacherManage(pageNum = ${teachers.pages})}">末页</a></li>
             </ul>
         </nav>
     </div>

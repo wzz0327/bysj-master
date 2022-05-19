@@ -5,8 +5,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-
-@MapperScan("com.fc.dao")
 @SpringBootApplication
 @MapperScan("com.fc.dao")
 public class BysjMasterApplication {

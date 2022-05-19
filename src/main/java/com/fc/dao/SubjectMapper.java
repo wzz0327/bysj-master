@@ -35,4 +35,6 @@ public interface SubjectMapper {
     List<Subject> finbytype(@Param("stype") Integer stype, @Param("cno") Integer cno);
 
     List<Subject> selectByStype(@Param("stype") Integer stype);
+
+    void deleteByCno(Integer cno);
 }

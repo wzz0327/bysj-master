@@ -8,6 +8,8 @@ import com.fc.entity.Paper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import org.springframework.stereotype.Repository;
+
 @Repository
 public interface ExamMapper {
     long countByExample(ExamExample example);
@@ -43,4 +45,6 @@ public interface ExamMapper {
     //List<Exam> selectByclassid(@Param("classid") int classid);
 
     void deleteByEid(Integer eid);
+
+    void deleteByCno(Integer cno);
 }

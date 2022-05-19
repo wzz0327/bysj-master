@@ -30,5 +30,12 @@ public interface CourseMapper {
 
     int updateByPrimaryKey(Course record);
 
+
+    Iterable<Course> findAll();
+
+    void save(Course course);
+
+    void deleteByCno(Integer cno);
+
     Course findByCno(@Param("cno")Integer cno);
 }
