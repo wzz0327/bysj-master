@@ -4,6 +4,9 @@ import com.fc.entity.Studentsubject;
 import com.fc.entity.StudentsubjectExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+@Repository
 
 public interface StudentsubjectMapper {
     long countByExample(StudentsubjectExample example);
@@ -27,4 +30,7 @@ public interface StudentsubjectMapper {
     int updateByPrimaryKeySelective(Studentsubject record);
 
     int updateByPrimaryKey(Studentsubject record);
+
+
+    List<Studentsubject> findBySeid(Integer userid, Integer seid);
 }

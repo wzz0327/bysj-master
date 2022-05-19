@@ -4,7 +4,9 @@ import com.fc.entity.Subject;
 import com.fc.entity.SubjectExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface SubjectMapper {
     long countByExample(SubjectExample example);
 
@@ -27,4 +29,6 @@ public interface SubjectMapper {
     int updateByPrimaryKeySelective(Subject record);
 
     int updateByPrimaryKey(Subject record);
+
+    Subject findBySid(Integer sid);
 }

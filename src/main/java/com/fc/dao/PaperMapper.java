@@ -4,7 +4,9 @@ import com.fc.entity.Paper;
 import com.fc.entity.PaperExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface PaperMapper {
     long countByExample(PaperExample example);
 
@@ -27,4 +29,5 @@ public interface PaperMapper {
     int updateByPrimaryKeySelective(Paper record);
 
     int updateByPrimaryKey(Paper record);
+    List<Paper> finbystype(@Param("eid")Integer eid, @Param("stype")int stype);
 }

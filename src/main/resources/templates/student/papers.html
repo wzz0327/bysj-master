@@ -161,7 +161,7 @@
                 <form th:action="@{/PaperScore}" method="post" role="myForm">
                 <input type="hidden" name="eid" th:value="${exam.eid}">
                 <input type="hidden" name="pname" th:value="${exam.pname}">
-                    <input type="hidden" name="userid" th:value="${session.lis.getUserid()}">
+                    <input type="hidden" name="userid" th:value="${session.user.getUserid()}">
                     <input type="hidden" id="tjtime" name="tjtime" value=""/>
                 <div id="Radio" class="panel-collapse collapse in">
                     <div class="panel-body">

@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fc.dao.ExamMapper">
+<!--  <select id="selectByclassid" parameterType="com.fc.entity.Exam">-->
+<!--    select * from exam where classid=#{classid}-->
+<!--  </select>-->
+
+  <select id="findByEid" parameterType="com.fc.entity.Exam" resultMap="BaseResultMap">
+    select * from exam where eid=#{eid}
+  </select>
+  <select id="finbyclassid" parameterType="com.fc.entity.Exam" resultMap="BaseResultMap">
+    select * from exam where classid=#{classid}
+  </select>
+
   <resultMap id="BaseResultMap" type="com.fc.entity.Exam">
     <id column="eid" jdbcType="INTEGER" property="eid" />
     <result column="pname" jdbcType="VARCHAR" property="pname" />
@@ -119,7 +130,7 @@
       #{examdate,jdbcType=DATE}, #{examtime,jdbcType=DATE}, #{testtime,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.fc.entity.Exam">
+  <insert id="insertSelective" keyProperty="id" useGeneratedKeys="true" parameterType="com.fc.entity.Exam">
     insert into exam
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="eid != null">

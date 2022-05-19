@@ -108,7 +108,7 @@
       #{eid,jdbcType=INTEGER}, #{sid,jdbcType=INTEGER}, #{studentkey,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.fc.entity.Studentsubject">
+  <insert id="insertSelective" parameterType="com.fc.entity.Studentsubject" useGeneratedKeys="true" keyProperty="ssid">
     insert into studentsubject
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="ssid != null">

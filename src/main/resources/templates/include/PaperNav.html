@@ -24,7 +24,7 @@
                     <li><a>修改密码</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a><span class="glyphicon glyphicon-user" th:text="${session.lis.getTruename()} "></span>（学生）</a></li>
+                    <li class="active"><a><span class="glyphicon glyphicon-user" th:text="${session.user.getTruename()} "></span>（学生）</a></li>
                     <li><a onclick="loginOut()"><span class="glyphicon glyphicon-off"></span>退出系统</a></li>
                     <script>
                         function loginOut() {

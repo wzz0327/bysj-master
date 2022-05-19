@@ -4,7 +4,9 @@ import com.fc.entity.Studentexam;
 import com.fc.entity.StudentexamExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface StudentexamMapper {
     long countByExample(StudentexamExample example);
 
@@ -27,4 +29,12 @@ public interface StudentexamMapper {
     int updateByPrimaryKeySelective(Studentexam record);
 
     int updateByPrimaryKey(Studentexam record);
+
+
+
+    Studentexam findByOne(@Param("userid") Integer userid, @Param("eid") Integer eid);
+
+    List<Studentexam> findByUserid(Integer userid);
+
+    Studentexam findByseid(Integer seid);
 }

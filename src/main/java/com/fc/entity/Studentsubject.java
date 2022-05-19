@@ -60,4 +60,7 @@ public class Studentsubject {
     public void setStudentkey(String studentkey) {
         this.studentkey = studentkey == null ? null : studentkey.trim();
     }
+
+    public void setSubject(Subject bySid) {
+    }
 }
